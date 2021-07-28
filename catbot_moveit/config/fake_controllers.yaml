@@ -1,0 +1,38 @@
+controller_list:
+  - name: fake_left_leg_group_controller
+    type: $(arg execution_type)
+    joints:
+      - bum_zlj
+      - bum_xlj
+      - bum_ylj
+      - knee_left
+      - ankle_lj
+      - foot_lj
+  - name: fake_right_leg_group_controller
+    type: $(arg execution_type)
+    joints:
+      - bum_zrj
+      - bum_xrj
+      - bum_yrj
+      - knee_right
+      - ankle_rj
+      - foot_rj
+  - name: fake_left_hand_group_controller
+    type: $(arg execution_type)
+    joints:
+      - shoulder_zlj
+      - shoulder_xlj
+      - shoulder_ylj
+      - forearm_ylj
+  - name: fake_right_hand_group_controller
+    type: $(arg execution_type)
+    joints:
+      - shoulder_zrj
+      - shoulder_xrj
+      - shoulder_yrj
+      - forearm_yrj
+initial:  # Define initial robot poses.
+  - group: right_leg_group
+    pose: test_pose
+  - group: right_hand_group
+    pose: fighting_pose
