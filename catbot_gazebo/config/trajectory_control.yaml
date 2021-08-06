@@ -1,0 +1,55 @@
+joint_state_controller:
+  type: joint_state_controller/JointStateController
+  publish_rate: 50
+
+left_leg_group_controller:
+  type: position_controllers/JointTrajectoryController
+  joints:
+    - bum_zlj
+    - bum_xlj
+    - bum_ylj
+    - knee_left
+    - ankle_lj
+    - foot_lj
+  stop_trajectory_duration: 0.5
+  state_publish_rate:  25
+  action_monitor_rate: 10
+
+
+right_leg_group_controller:
+  type: position_controllers/JointTrajectoryController
+  joints:
+    - bum_zrj
+    - bum_xrj
+    - bum_yrj
+    - knee_right
+    - ankle_rj
+    - foot_rj
+  stop_trajectory_duration: 0.5
+  state_publish_rate:  25
+  action_monitor_rate: 10
+
+
+left_hand_group_controller:
+  type: position_controllers/JointTrajectoryController
+  joints:
+    - shoulder_zlj
+    - shoulder_xlj
+    - shoulder_ylj
+    - forearm_ylj
+  stop_trajectory_duration: 0.5
+  state_publish_rate:  25
+  action_monitor_rate: 10
+  
+
+
+right_hand_group_controller:
+  type: position_controllers/JointTrajectoryController
+  joints:
+    - shoulder_zrj
+    - shoulder_xrj
+    - shoulder_yrj
+    - forearm_yrj
+  stop_trajectory_duration: 0.5
+  state_publish_rate:  25
+  action_monitor_rate: 10

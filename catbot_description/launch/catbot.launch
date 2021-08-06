@@ -1,0 +1,38 @@
+<launch>
+    <param name="catbot_robot_description" command="$(find xacro)/xacro '$(find catbot_description)/urdf/bot.xacro'"/>
+    <param name="curdbot_robot_description" command="$(find xacro)/xacro '$(find curdbot_description)/urdf/curdbot.xacro'"/>
+   
+   <!-- <include file="$(find catbot_gazebo)/launch/env.launch" /> 
+   <include file="$(find catbot_gazebo)/launch/controllers.launch" />  -->
+
+<!-- 
+    <arg name="x" default="0"/>
+    <arg name="y" default="0"/>
+    <arg name="z" default="1"/>
+         -->
+    <!-- <node name="mybot_spawn" pkg="gazebo_ros" type="spawn_model" output="screen" 
+        args="-urdf -param robot_description -model catbot -x $(arg x) -y $(arg y) -z $(arg z)" /> -->
+  
+    <!-- <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen"> -->
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="curdbot_state_publisher" >
+      <remap from="robot_description" to="curdbot_robot_description" />
+      <remap from="joint_states" to="curdbot_joint_states" />
+    </node>
+
+
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="catbot_state_publisher" >
+      <remap from="robot_description" to="catbot_robot_description" />
+      <remap from="joint_states" to="catbot_joint_states" />
+    </node>
+
+    <node name="curdbot_joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" respawn="false" output="screen">
+    <remap from="robot_description" to="curdbot_robot_description" />
+    <remap from="joint_states" to="curdbot_joint_states" />
+    </node>
+    <node name="catbot_joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" respawn="false" output="screen">
+    <remap from="robot_description" to="catbot_robot_description" />
+    <remap from="joint_states" to="catbot_joint_states" />
+    </node>
+
+  
+</launch>

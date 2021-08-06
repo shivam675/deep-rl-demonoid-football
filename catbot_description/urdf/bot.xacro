@@ -4,7 +4,7 @@
 <xacro:include filename="$(find catbot_description)/urdf/main.gazebo" />
 
 
-<!-- <link name="base_footprint">
+<link name="base_footprint">
 <inertial>
     <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
     <mass value="0.3" />
@@ -22,7 +22,7 @@
      <cylinder length="0.001" radius="0.001" />
     </geometry>
 </collision>
-</link> -->
+</link>
 
 
 
@@ -49,12 +49,12 @@
 </link>
 
 
-<!-- <joint name="base_joint" type="fixed">
+<joint name="base_joint" type="fixed">
     <axis xyz="0 0 0" />
-    <origin xyz="0 0 0.75" rpy="0 0 0" />
+    <origin xyz="0 0 0.80" rpy="0 0 0" />
     <parent link="base_footprint" />
     <child link="base_body" />
-</joint> -->
+</joint>
 
 <!-- ##########################################################
      ######################### left leg ########################

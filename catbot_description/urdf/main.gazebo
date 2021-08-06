@@ -2,6 +2,26 @@
 
 <robot name="catbot" xmlns:xacro="http://www.ros.org/wiki/xacro">
   
+    <gazebo>
+        <plugin name="gazebo_ros_imu_controller" filename="libgazebo_ros_imu.so">
+          <robotNamespace>/catbot</robotNamespace>
+          <topicName>imu/data</topicName>
+          <serviceName>imu/service</serviceName>
+          <bodyName>base_body</bodyName>
+          <gaussianNoise>0</gaussianNoise>
+          <rpyOffsets>0 0 0</rpyOffsets>
+          <!--<updateRate>50.0</updateRate>-->
+          <alwaysOn>true</alwaysOn>
+          <gaussianNoise>0</gaussianNoise>
+        </plugin>
+    </gazebo>
+
+
+
+
+
+
+
 
  <transmission name="bum_zlj_tran">
     <type>transmission_interface/SimpleTransmission</type>
