@@ -40,7 +40,7 @@ class ControllersConnection():
 
             return switch_result.ok
 
-        except rospy.ServiceException, e:
+        except rospy.ServiceException as e:
             print (self.switch_service_name+" service call failed")
 
             return None
