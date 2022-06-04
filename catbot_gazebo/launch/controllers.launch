@@ -1,11 +1,36 @@
 <launch>
-    <rosparam file="$(find catbot_gazebo)/config/trajectory_control.yaml" command="load"/>
-    <!-- <rosparam file="$(find catbot_gazebo)/config/effort_controller.yaml" command="load"/> -->
-    <node name="arm_controller_spawner" pkg="controller_manager" type="controller_manager" 
-    args="spawn left_leg_group_controller right_leg_group_controller left_hand_group_controller right_hand_group_controller" respawn="false"/>
-
-    <node name="joint_state_controller_spawner" pkg="controller_manager" type="controller_manager" args="spawn joint_state_controller" respawn="false"/>
-
+    <!-- <rosparam file="$(find catbot_gazebo)/config/trajectory_control.yaml" command="load"/> -->
+    <rosparam file="$(find catbot_gazebo)/config/effort_controller.yaml" command="load"/>
+    <!-- <node name="joint_state_controller_spawner" pkg="controller_manager" type="controller_manager" args="spawn joint_state_controller" respawn="false"/> -->
     <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" respawn="false" />
+
+
+
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+        output="screen" args="
+                              joint_state_controller
+                              bum_zlj_joint_position_controller
+                              bum_xlj_joint_position_controller
+                              bum_ylj_joint_position_controller
+                              knee_left_joint_position_controller
+                              ankle_lj_joint_position_controller
+                              foot_lj_joint_position_controller
+                              bum_zrj_joint_position_controller
+                              bum_xrj_joint_position_controller
+                              bum_yrj_joint_position_controller
+                              knee_right_joint_position_controller
+                              ankle_rj_joint_position_controller
+                              foot_rj_joint_position_controller
+                              shoulder_zlj_joint_position_controller
+                              shoulder_xlj_joint_position_controller
+                              shoulder_ylj_joint_position_controller
+                              forearm_ylj_joint_position_controller
+                              shoulder_zrj_joint_position_controller
+                              shoulder_xrj_joint_position_controller
+                              shoulder_yrj_joint_position_controller
+                              forearm_yrj_joint_position_controller
+
+                              --shutdown-timeout 3">
+    </node>
 
 </launch>

@@ -1,0 +1,1106 @@
+<sdf version='1.7'>
+  <model name='catbot'>
+    <link name='base_footprint'>
+      <inertial>
+        <pose>0 0 1.2093 0 -0 0</pose>
+        <mass>4.3</mass>
+        <inertia>
+          <ixx>1.00004</ixx>
+          <ixy>-2.2739</ixy>
+          <ixz>0.10227</ixz>
+          <iyy>1.00341</iyy>
+          <iyz>1.5639</iyz>
+          <izz>0.18742</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_footprint_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.001</length>
+            <radius>0.001</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <collision name='base_footprint_fixed_joint_lump__base_body_collision_1'>
+        <pose>0 0 0.8 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://catbot_description/meshes/dae/body.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='base_footprint_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.001</length>
+            <radius>0.001</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+      <visual name='base_footprint_fixed_joint_lump__base_body_visual_1'>
+        <pose>0 0 0.8 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://catbot_description/meshes/dae/body.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='bum_zlj' type='revolute'>
+      <pose relative_to='base_footprint'>-0.02 0.265 0.96 0 -0.3 0</pose>
+      <parent>base_footprint</parent>
+      <child>bum_zl</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-0.345</lower>
+          <upper>0.345</upper>
+          <effort>150</effort>
+          <velocity>3</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='bum_zl'>
+      <pose relative_to='bum_zlj'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.19 0 -0 0</pose>
+        <mass>0.3</mass>
+        <inertia>
+          <ixx>0.1</ixx>
+          <ixy>0.1</ixy>
+          <ixz>0.1</ixz>
+          <iyy>0.1</iyy>
+          <iyz>0.1</iyz>
+          <izz>0.1</izz>
+        </inertia>
+      </inertial>
+      <collision name='bum_zl_collision'>
+        <pose>0 0 0 0 -0 1.571</pose>
+        <geometry>
+          <cylinder>
+            <length>0.001</length>
+            <radius>0.001</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='bum_zl_visual'>
+        <pose>0 0 0 0 -0 1.571</pose>
+        <geometry>
+          <cylinder>
+            <length>0.001</length>
+            <radius>0.001</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='bum_xlj' type='revolute'>
+      <pose relative_to='bum_zl'>0 0 0 0 -0 0</pose>
+      <parent>bum_zl</parent>
+      <child>bum_xl</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <lower>-0.345</lower>
+          <upper>1</upper>
+          <effort>150</effort>
+          <velocity>3</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='bum_xl'>
+      <pose relative_to='bum_xlj'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.19 0 -0 0</pose>
+        <mass>0.3</mass>
+        <inertia>
+          <ixx>0.1</ixx>
+          <ixy>0.1</ixy>
+          <ixz>0.1</ixz>
+          <iyy>0.1</iyy>
+          <iyz>0.1</iyz>
+          <izz>0.1</izz>
+        </inertia>
+      </inertial>
+      <collision name='bum_xl_collision'>
+        <pose>0 0 0 0 -0 1.571</pose>
+        <geometry>
+          <cylinder>
+            <length>0.001</length>
+            <radius>0.001</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='bum_xl_visual'>
+        <pose>0 0 0 0 -0 1.571</pose>
+        <geometry>
+          <cylinder>
+            <length>0.001</length>
+            <radius>0.001</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='bum_ylj' type='revolute'>
+      <pose relative_to='bum_xl'>0 0 0 0 0 -3.14119</pose>
+      <parent>bum_xl</parent>
+      <child>left_hip</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>0</lower>
+          <upper>1</upper>
+          <effort>150</effort>
+          <velocity>3</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='left_hip'>
+      <pose relative_to='bum_ylj'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.19 0 -0 0</pose>
+        <mass>0.3</mass>
+        <inertia>
+          <ixx>0.31319</ixx>
+          <ixy>-1.5919</ixy>
+          <ixz>0.00039</ixz>
+          <iyy>0.314057</iyy>
+          <iyz>-0.0006</iyz>
+          <izz>0.02458</izz>
+        </inertia>
+      </inertial>
+      <collision name='left_hip_collision'>
+        <pose>0 0 0 0 -0 1.571</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://catbot_description/meshes/dae/hip.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='left_hip_visual'>
+        <pose>0 0 0 0 -0 1.571</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://catbot_description/meshes/dae/hip.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='knee_left' type='revolute'>
+      <pose relative_to='left_hip'>0 0 -0.335 0 -0.5 0</pose>
+      <parent>left_hip</parent>
+      <child>left_shin</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1.3</lower>
+          <upper>0</upper>
+          <effort>150</effort>
+          <velocity>3</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='left_shin'>
+      <pose relative_to='knee_left'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.2 0 -0 0</pose>
+        <mass>0.3</mass>
+        <inertia>
+          <ixx>0.283162</ixx>
+          <ixy>0.00034</ixy>
+          <ixz>0.001493</ixz>
+          <iyy>0.28429</iyy>
+          <iyz>0.000595</iyz>
+          <izz>0.0277465</izz>
+        </inertia>
+      </inertial>
+      <collision name='left_shin_collision'>
+        <pose>0 0 0 0 -0 1.571</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://catbot_description/meshes/dae/shin.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='left_shin_visual'>
+        <pose>0 0 0 0 -0 1.571</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://catbot_description/meshes/dae/shin.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='ankle_lj' type='revolute'>
+      <pose relative_to='left_shin'>0 0 -0.58 0 0.3 0</pose>
+      <parent>left_shin</parent>
+      <child>left_ankle</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1.3</lower>
+          <upper>0.3</upper>
+          <effort>150</effort>
+          <velocity>3</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='left_ankle'>
+      <pose relative_to='ankle_lj'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.3</mass>
+        <inertia>
+          <ixx>0.119924</ixx>
+          <ixy>-0.0003874</ixy>
+          <ixz>-0.0010433</ixz>
+          <iyy>0.166674</iyy>
+          <iyz>5.80102</iyz>
+          <izz>0.131467</izz>
+        </inertia>
+      </inertial>
+      <collision name='left_ankle_collision'>
+        <pose>-0.06 0 0 0 0 -3.14119</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://catbot_description/meshes/dae/ankle.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='left_ankle_visual'>
+        <pose>-0.06 0 0 0 0 -3.14119</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://catbot_description/meshes/dae/ankle.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='foot_lj' type='revolute'>
+      <pose relative_to='left_ankle'>-0.16 0 -0.028 0 -0 0</pose>
+      <parent>left_ankle</parent>
+      <child>left_foot</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-0.4</lower>
+          <upper>0.7</upper>
+          <effort>150</effort>
+          <velocity>3</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='left_foot'>
+      <pose relative_to='foot_lj'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.000843 0 -0 0</pose>
+        <mass>0.51</mass>
+        <inertia>
+          <ixx>0.109189</ixx>
+          <ixy>1.3005</ixy>
+          <ixz>-0.0102</ixz>
+          <iyy>0.156889</iyy>
+          <iyz>3.44815</iyz>
+          <izz>0.100001</izz>
+        </inertia>
+      </inertial>
+      <collision name='left_foot_collision'>
+        <pose>0 0 0 0 0 -3.14119</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://catbot_description/meshes/dae/foot.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='left_foot_fixed_joint_lump__left_leg_contact_sensor_collision_1'>
+        <pose>0 0 -0.043 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.015 0.015 0.015</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='left_foot_visual'>
+        <pose>0 0 0 0 0 -3.14119</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://catbot_description/meshes/dae/foot.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='left_foot_fixed_joint_lump__left_leg_contact_sensor_visual_1'>
+        <pose>0 0 -0.043 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.015 0.01 0.015</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='bum_zrj' type='revolute'>
+      <pose relative_to='base_footprint'>-0.02 -0.265 0.96 0 -0.3 0</pose>
+      <parent>base_footprint</parent>
+      <child>bum_zr</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-0.345</lower>
+          <upper>0.345</upper>
+          <effort>150</effort>
+          <velocity>3</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='bum_zr'>
+      <pose relative_to='bum_zrj'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.19 0 -0 0</pose>
+        <mass>0.3</mass>
+        <inertia>
+          <ixx>0.1</ixx>
+          <ixy>0.1</ixy>
+          <ixz>0.1</ixz>
+          <iyy>0.1</iyy>
+          <iyz>0.1</iyz>
+          <izz>0.1</izz>
+        </inertia>
+      </inertial>
+      <collision name='bum_zr_collision'>
+        <pose>0 0 0 0 -0 1.571</pose>
+        <geometry>
+          <cylinder>
+            <length>0.001</length>
+            <radius>0.001</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='bum_zr_visual'>
+        <pose>0 0 0 0 -0 1.571</pose>
+        <geometry>
+          <cylinder>
+            <length>0.001</length>
+            <radius>0.001</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='bum_xrj' type='revolute'>
+      <pose relative_to='bum_zr'>0 0 0 0 -0 0</pose>
+      <parent>bum_zr</parent>
+      <child>bum_xr</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <lower>-1</lower>
+          <upper>0.345</upper>
+          <effort>150</effort>
+          <velocity>3</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='bum_xr'>
+      <pose relative_to='bum_xrj'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.19 0 -0 0</pose>
+        <mass>0.3</mass>
+        <inertia>
+          <ixx>0.1</ixx>
+          <ixy>0.1</ixy>
+          <ixz>0.1</ixz>
+          <iyy>0.1</iyy>
+          <iyz>0.1</iyz>
+          <izz>0.1</izz>
+        </inertia>
+      </inertial>
+      <collision name='bum_xr_collision'>
+        <pose>0 0 0 0 -0 1.571</pose>
+        <geometry>
+          <cylinder>
+            <length>0.001</length>
+            <radius>0.001</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='bum_xr_visual'>
+        <pose>0 0 0 0 -0 1.571</pose>
+        <geometry>
+          <cylinder>
+            <length>0.001</length>
+            <radius>0.001</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='bum_yrj' type='revolute'>
+      <pose relative_to='bum_xr'>0 0 0 0 0 -3.14119</pose>
+      <parent>bum_xr</parent>
+      <child>right_hip</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>0</lower>
+          <upper>1</upper>
+          <effort>150</effort>
+          <velocity>3</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='right_hip'>
+      <pose relative_to='bum_yrj'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.19 0 -0 0</pose>
+        <mass>0.3</mass>
+        <inertia>
+          <ixx>0.31319</ixx>
+          <ixy>-1.5919</ixy>
+          <ixz>0.00039</ixz>
+          <iyy>0.314057</iyy>
+          <iyz>-0.0006</iyz>
+          <izz>0.02458</izz>
+        </inertia>
+      </inertial>
+      <collision name='right_hip_collision'>
+        <pose>0 0 0 0 -0 1.571</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://catbot_description/meshes/dae/hip.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='right_hip_visual'>
+        <pose>0 0 0 0 -0 1.571</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://catbot_description/meshes/dae/hip.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='knee_right' type='revolute'>
+      <pose relative_to='right_hip'>0 0 -0.335 0 -0.5 0</pose>
+      <parent>right_hip</parent>
+      <child>right_shin</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1.3</lower>
+          <upper>0</upper>
+          <effort>150</effort>
+          <velocity>3</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='right_shin'>
+      <pose relative_to='knee_right'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.2 0 -0 0</pose>
+        <mass>0.3</mass>
+        <inertia>
+          <ixx>0.283162</ixx>
+          <ixy>0.00034</ixy>
+          <ixz>0.001493</ixz>
+          <iyy>0.28429</iyy>
+          <iyz>0.000595</iyz>
+          <izz>0.0277465</izz>
+        </inertia>
+      </inertial>
+      <collision name='right_shin_collision'>
+        <pose>0 0 0 0 -0 1.571</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://catbot_description/meshes/dae/shin.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='right_shin_visual'>
+        <pose>0 0 0 0 -0 1.571</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://catbot_description/meshes/dae/shin.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='ankle_rj' type='revolute'>
+      <pose relative_to='right_shin'>0 0 -0.58 0 0.3 0</pose>
+      <parent>right_shin</parent>
+      <child>right_ankle</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1.3</lower>
+          <upper>0.3</upper>
+          <effort>150</effort>
+          <velocity>3</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='right_ankle'>
+      <pose relative_to='ankle_rj'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.3</mass>
+        <inertia>
+          <ixx>0.119924</ixx>
+          <ixy>-0.0003874</ixy>
+          <ixz>-0.0010433</ixz>
+          <iyy>0.166674</iyy>
+          <iyz>5.80102</iyz>
+          <izz>0.131467</izz>
+        </inertia>
+      </inertial>
+      <collision name='right_ankle_collision'>
+        <pose>-0.06 0 0 0 0 -3.14119</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://catbot_description/meshes/dae/ankle.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='right_ankle_visual'>
+        <pose>-0.06 0 0 0 0 -3.14119</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://catbot_description/meshes/dae/ankle.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='foot_rj' type='revolute'>
+      <pose relative_to='right_ankle'>-0.16 0 -0.028 0 -0 0</pose>
+      <parent>right_ankle</parent>
+      <child>right_foot</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-0.4</lower>
+          <upper>0.7</upper>
+          <effort>150</effort>
+          <velocity>3</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='right_foot'>
+      <pose relative_to='foot_rj'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.000843 0 -0 0</pose>
+        <mass>0.51</mass>
+        <inertia>
+          <ixx>0.119943</ixx>
+          <ixy>-0.0003874</ixy>
+          <ixz>-0.0010433</ixz>
+          <iyy>0.166693</iyy>
+          <iyz>5.80102</iyz>
+          <izz>0.131468</izz>
+        </inertia>
+      </inertial>
+      <collision name='right_foot_collision'>
+        <pose>0 0 0 0 0 -3.14119</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://catbot_description/meshes/dae/foot.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='right_foot_fixed_joint_lump__right_leg_contact_sensor_collision_1'>
+        <pose>0 0 -0.043 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.015 0.015 0.015</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='right_foot_visual'>
+        <pose>0 0 0 0 0 -3.14119</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://catbot_description/meshes/dae/foot.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='right_foot_fixed_joint_lump__right_leg_contact_sensor_visual_1'>
+        <pose>0 0 -0.043 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.015 0.015 0.015</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='shoulder_zlj' type='revolute'>
+      <pose relative_to='base_footprint'>0 0.3 1.67 0 0 -3.14119</pose>
+      <parent>base_footprint</parent>
+      <child>shoulder_zl</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1.65</lower>
+          <upper>0.1</upper>
+          <effort>150</effort>
+          <velocity>3</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='shoulder_zl'>
+      <pose relative_to='shoulder_zlj'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.3</mass>
+        <inertia>
+          <ixx>0.1</ixx>
+          <ixy>0.1</ixy>
+          <ixz>0.1</ixz>
+          <iyy>0.1</iyy>
+          <iyz>0.1</iyz>
+          <izz>0.1</izz>
+        </inertia>
+      </inertial>
+      <collision name='shoulder_zl_collision'>
+        <pose>0 0 0 0 -0 1.571</pose>
+        <geometry>
+          <cylinder>
+            <length>0.001</length>
+            <radius>0.001</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='shoulder_zl_visual'>
+        <pose>0 0 0 0 -0 1.571</pose>
+        <geometry>
+          <cylinder>
+            <length>0.001</length>
+            <radius>0.001</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='shoulder_xlj' type='revolute'>
+      <pose relative_to='shoulder_zl'>0 0 0 0 -0 0</pose>
+      <parent>shoulder_zl</parent>
+      <child>shoulder_xl</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <lower>-0.1</lower>
+          <upper>1.6</upper>
+          <effort>150</effort>
+          <velocity>3</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='shoulder_xl'>
+      <pose relative_to='shoulder_xlj'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.3</mass>
+        <inertia>
+          <ixx>0.1</ixx>
+          <ixy>0.1</ixy>
+          <ixz>0.1</ixz>
+          <iyy>0.1</iyy>
+          <iyz>0.1</iyz>
+          <izz>0.1</izz>
+        </inertia>
+      </inertial>
+      <collision name='shoulder_xl_collision'>
+        <pose>0 0 0 0 -0 1.571</pose>
+        <geometry>
+          <cylinder>
+            <length>0.001</length>
+            <radius>0.001</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='shoulder_xl_visual'>
+        <pose>0 0 0 0 -0 1.571</pose>
+        <geometry>
+          <cylinder>
+            <length>0.001</length>
+            <radius>0.001</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='shoulder_ylj' type='revolute'>
+      <pose relative_to='shoulder_xl'>0 0 0 0 0 -3.14119</pose>
+      <parent>shoulder_xl</parent>
+      <child>left_shoulder</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-3</lower>
+          <upper>0</upper>
+          <effort>150</effort>
+          <velocity>3</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='left_shoulder'>
+      <pose relative_to='shoulder_ylj'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.3</mass>
+        <inertia>
+          <ixx>0.030306</ixx>
+          <ixy>1.07243</ixy>
+          <ixz>-0.00014</ixz>
+          <iyy>0.123799</iyy>
+          <iyz>-3.24634</iyz>
+          <izz>0.10389</izz>
+        </inertia>
+      </inertial>
+      <collision name='left_shoulder_collision'>
+        <pose>0 0 0 1.571 -0 1.571</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://catbot_description/meshes/dae/arm.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='left_shoulder_visual'>
+        <pose>0 0 0 1.571 -0 1.571</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://catbot_description/meshes/dae/arm.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='forearm_ylj' type='revolute'>
+      <pose relative_to='left_shoulder'>0 0.48 0 0 0 -3.14119</pose>
+      <parent>left_shoulder</parent>
+      <child>left_forearm</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <lower>-1.6</lower>
+          <upper>0</upper>
+          <effort>150</effort>
+          <velocity>3</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='left_forearm'>
+      <pose relative_to='forearm_ylj'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.3</mass>
+        <inertia>
+          <ixx>0.37633</ixx>
+          <ixy>-5.2759</ixy>
+          <ixz>-8.13739</ixz>
+          <iyy>0.382769</iyy>
+          <iyz>-0.00136</iyz>
+          <izz>0.03977</izz>
+        </inertia>
+      </inertial>
+      <collision name='left_forearm_collision'>
+        <pose>0 0 0 0 0 -3.14119</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://catbot_description/meshes/dae/forearm.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='left_forearm_visual'>
+        <pose>0 0 0 0 0 -3.14119</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://catbot_description/meshes/dae/forearm.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='shoulder_zrj' type='revolute'>
+      <pose relative_to='base_footprint'>0 -0.3 1.67 0 -0 0</pose>
+      <parent>base_footprint</parent>
+      <child>shoulder_zr</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-0.345</lower>
+          <upper>1.65</upper>
+          <effort>150</effort>
+          <velocity>3</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='shoulder_zr'>
+      <pose relative_to='shoulder_zrj'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.3</mass>
+        <inertia>
+          <ixx>0.1</ixx>
+          <ixy>0.1</ixy>
+          <ixz>0.1</ixz>
+          <iyy>0.1</iyy>
+          <iyz>0.1</iyz>
+          <izz>0.1</izz>
+        </inertia>
+      </inertial>
+      <collision name='shoulder_zr_collision'>
+        <pose>0 0 0 0 -0 1.571</pose>
+        <geometry>
+          <cylinder>
+            <length>0.001</length>
+            <radius>0.001</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='shoulder_zr_visual'>
+        <pose>0 0 0 0 -0 1.571</pose>
+        <geometry>
+          <cylinder>
+            <length>0.001</length>
+            <radius>0.001</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='shoulder_xrj' type='revolute'>
+      <pose relative_to='shoulder_zr'>0 0 0 0 -0 0</pose>
+      <parent>shoulder_zr</parent>
+      <child>shoulder_xr</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <lower>-0.1</lower>
+          <upper>1.6</upper>
+          <effort>150</effort>
+          <velocity>3</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='shoulder_xr'>
+      <pose relative_to='shoulder_xrj'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.3</mass>
+        <inertia>
+          <ixx>0.1</ixx>
+          <ixy>0.1</ixy>
+          <ixz>0.1</ixz>
+          <iyy>0.1</iyy>
+          <iyz>0.1</iyz>
+          <izz>0.1</izz>
+        </inertia>
+      </inertial>
+      <collision name='shoulder_xr_collision'>
+        <pose>0 0 0 0 -0 1.571</pose>
+        <geometry>
+          <cylinder>
+            <length>0.001</length>
+            <radius>0.001</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='shoulder_xr_visual'>
+        <pose>0 0 0 0 -0 1.571</pose>
+        <geometry>
+          <cylinder>
+            <length>0.001</length>
+            <radius>0.001</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='shoulder_yrj' type='revolute'>
+      <pose relative_to='shoulder_xr'>0 0 0 0 0 -3.14119</pose>
+      <parent>shoulder_xr</parent>
+      <child>right_shoulder</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>0</lower>
+          <upper>3</upper>
+          <effort>150</effort>
+          <velocity>3</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='right_shoulder'>
+      <pose relative_to='shoulder_yrj'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.3</mass>
+        <inertia>
+          <ixx>0.030306</ixx>
+          <ixy>1.07243</ixy>
+          <ixz>-0.00014</ixz>
+          <iyy>0.123799</iyy>
+          <iyz>-3.24634</iyz>
+          <izz>0.10389</izz>
+        </inertia>
+      </inertial>
+      <collision name='right_shoulder_collision'>
+        <pose>0 0 0 1.571 -0 1.571</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://catbot_description/meshes/dae/arm.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='right_shoulder_visual'>
+        <pose>0 0 0 1.571 -0 1.571</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://catbot_description/meshes/dae/arm.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='forearm_yrj' type='revolute'>
+      <pose relative_to='right_shoulder'>0 0.48 0 0 0 -3.14119</pose>
+      <parent>right_shoulder</parent>
+      <child>right_forearm</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <lower>-1.6</lower>
+          <upper>0</upper>
+          <effort>150</effort>
+          <velocity>3</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='right_forearm'>
+      <pose relative_to='forearm_yrj'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.3</mass>
+        <inertia>
+          <ixx>0.37633</ixx>
+          <ixy>-5.2759</ixy>
+          <ixz>-8.13739</ixz>
+          <iyy>0.382769</iyy>
+          <iyz>-0.00136</iyz>
+          <izz>0.03977</izz>
+        </inertia>
+      </inertial>
+      <collision name='right_forearm_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://catbot_description/meshes/dae/forearm.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='right_forearm_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://catbot_description/meshes/dae/forearm.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+</sdf>

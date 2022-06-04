@@ -16,10 +16,10 @@
         </plugin>
     </gazebo>
 
-    <gazebo>
+    <!-- <gazebo>
         <plugin name="p3d_base_controller" filename="libgazebo_ros_p3d.so">
             <alwaysOn>true</alwaysOn>
-            <!--<updateRate>50.0</updateRate>-->
+            <updateRate>50.0</updateRate>
             <bodyName>base</bodyName>
             <topicName>odom</topicName>
             <gaussianNoise>0.01</gaussianNoise>
@@ -27,7 +27,7 @@
             <xyzOffsets>0 0 0</xyzOffsets>
             <rpyOffsets>0 0 0</rpyOffsets>
         </plugin>
-    </gazebo>
+    </gazebo> -->
 
     <!-- Left leg -->
 
@@ -42,7 +42,7 @@
         <sensor name="left_leg_contact_sensor" type="contact">
           <always_on>true</always_on>
           <contact>
-            <collision>left_leg_contact_sensor_collision</collision>
+            <collision>left_foot_fixed_joint_lump__left_leg_contact_sensor_collision_1</collision>
           </contact>
           <plugin name="bumper0_plugin" filename="libgazebo_ros_bumper.so">
             <bumperTopicName>lower_left_leg_contactsensor_state</bumperTopicName>
@@ -65,7 +65,7 @@
         <sensor name="right_leg_contact_sensor" type="contact">
           <always_on>true</always_on>
           <contact>
-            <collision>right_leg_contact_sensor_collision</collision>
+            <collision>right_foot_fixed_joint_lump__right_leg_contact_sensor_collision_1</collision>
           </contact>
           <plugin name="bumper0_plugin" filename="libgazebo_ros_bumper.so">
             <bumperTopicName>lower_right_leg_contactsensor_state</bumperTopicName>
@@ -81,10 +81,10 @@
  <transmission name="bum_zlj_tran">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="bum_zlj">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="bum_zlj_motor">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
 </transmission>
@@ -95,10 +95,10 @@
 <transmission name="bum_xlj_tran">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="bum_xlj">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="bum_xlj_motor">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
 </transmission>
@@ -109,10 +109,10 @@
 <transmission name="bum_ylj_tran">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="bum_ylj">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="bum_ylj_motor">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
 </transmission>
@@ -123,10 +123,10 @@
 <transmission name="knee_left_tran">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="knee_left">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="knee_left_motor">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
 </transmission>
@@ -137,10 +137,10 @@
 <transmission name="ankle_lj_tran">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="ankle_lj">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="ankle_lj_motor">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
 </transmission>
@@ -151,10 +151,10 @@
 <transmission name="foot_lj_tran">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="foot_lj">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="foot_lj_motor">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
 </transmission>
@@ -165,10 +165,10 @@
 <transmission name="bum_zrj_tran">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="bum_zrj">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="bum_zrj_motor">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
 </transmission>
@@ -179,10 +179,10 @@
 <transmission name="bum_xrj_tran">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="bum_xrj">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="bum_xrj_motor">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
 </transmission>
@@ -193,10 +193,10 @@
 <transmission name="bum_xrj_tran">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="bum_xrj">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="bum_xrj_motor">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
 </transmission>
@@ -207,10 +207,10 @@
 <transmission name="bum_yrj_tran">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="bum_yrj">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="bum_yrj_motor">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
 </transmission>
@@ -221,10 +221,10 @@
 <transmission name="knee_right_tran">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="knee_right">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="knee_right_motor">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
 </transmission>
@@ -235,10 +235,10 @@
 <transmission name="ankle_rj_tran">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="ankle_rj">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="ankle_rj_motor">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
 </transmission>
@@ -249,10 +249,10 @@
 <transmission name="foot_rj_tran">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="foot_rj">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="foot_rj_motor">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
 </transmission>
@@ -263,10 +263,10 @@
 <transmission name="shoulder_zrj_tran">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="shoulder_zrj">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="shoulder_zrj_motor">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
 </transmission>
@@ -277,10 +277,10 @@
 <transmission name="shoulder_xrj_tran">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="shoulder_xrj">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="shoulder_xrj_motor">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
 </transmission>
@@ -291,10 +291,10 @@
 <transmission name="shoulder_yrj_tran">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="shoulder_yrj">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="shoulder_yrj_motor">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
 </transmission>
@@ -305,10 +305,10 @@
 <transmission name="forearm_yrj_tran">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="forearm_yrj">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="forearm_yrj_motor">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
 </transmission>
@@ -319,10 +319,10 @@
 <transmission name="shoulder_zlj_tran">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="shoulder_zlj">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="shoulder_zlj_motor">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
 </transmission>
@@ -333,10 +333,10 @@
 <transmission name="shoulder_xlj_tran">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="shoulder_xlj">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="shoulder_xlj_motor">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
 </transmission>
@@ -346,10 +346,10 @@
 <transmission name="shoulder_ylj_tran">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="shoulder_ylj">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="shoulder_ylj_motor">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
 </transmission>
@@ -359,10 +359,10 @@
 <transmission name="forearm_ylj_tran">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="forearm_ylj">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="forearm_ylj_motor">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
 </transmission>

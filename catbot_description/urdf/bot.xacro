@@ -67,7 +67,7 @@
     <parent link="base_body" />
     <child link="bum_zl" />
     <axis xyz="0 0 1" />
-    <limit lower="-0.345" upper="0.345" effort="150.0" velocity="3"/>
+    <limit lower="-0.345" upper="0.345" effort="1000" velocity="3"/>
     <!-- dynamics damping="5" friction="0.0"/ -->
 </joint>
 
@@ -100,7 +100,7 @@
     <parent link="bum_zl" />
     <child link="bum_xl" />
     <axis xyz="1 0 0" />
-    <limit lower="-0.345" upper="1" effort="150.0" velocity="3"/>
+    <limit lower="-0.345" upper="1" effort="1000" velocity="3"/>
     <!-- dynamics damping="5" friction="0.0"/ -->
 </joint>
 
@@ -133,7 +133,7 @@
     <parent link="bum_xl" />
     <child link="left_hip" />
     <axis xyz="0 1 0" />
-    <limit lower="0" upper="1" effort="150.0" velocity="3"/>
+    <limit lower="0" upper="1" effort="1000" velocity="3"/>
     <!-- dynamics damping="5" friction="0.0"/ -->
 </joint>
 
@@ -168,7 +168,7 @@
     <parent link="left_hip" />
     <child link="left_shin" />
     <axis xyz="0 1 0" />
-    <limit lower="-1.3" upper="0" effort="150.0" velocity="3"/>
+    <limit lower="-1.3" upper="0" effort="1000" velocity="3"/>
     <!-- dynamics damping="5" friction="0.0"/ -->
 </joint>
 
@@ -204,7 +204,7 @@
     <parent link="left_shin" />
     <child link="left_ankle" />
     <axis xyz="0 1 0" />
-    <limit lower="-1.3" upper="0.3" effort="150.0" velocity="3"/>
+    <limit lower="-1.3" upper="0.3" effort="1000" velocity="3"/>
     <!-- dynamics damping="5" friction="0.0"/ -->
 </joint>
 
@@ -238,7 +238,7 @@
     <parent link="left_ankle" />
     <child link="left_foot" />
     <axis xyz="0 1 0" />
-    <limit lower="-0.4" upper="0.7" effort="150.0" velocity="3"/>
+    <limit lower="-0.4" upper="0.7" effort="1000" velocity="3"/>
     <!-- dynamics damping="5" friction="0.0"/ -->
 </joint>
 
@@ -274,7 +274,7 @@
     <parent link="left_foot" />
     <child link="left_leg_contact_sensor" />
     <axis xyz="0 1 0" />
-    <!-- <limit lower="-0.4" upper="0.7" effort="150.0" velocity="3"/> -->
+    <!-- <limit lower="-0.4" upper="0.7" effort="1000" velocity="3"/> -->
     <!-- dynamics damping="5" friction="0.0"/ -->
 </joint>
 
@@ -293,7 +293,7 @@
                 <!--
                 <sphere radius="0.030"/>
                 -->
-                <box size="0.01 0.01 0.01"/>
+                <box size="0.015 0.015 0.015"/>
                 
                 <!-- <sphere radius="0.01"/> -->
             </geometry>
@@ -304,7 +304,7 @@
                 <!--
                 <sphere radius="0.030"/>
                 -->
-                <box size="0.01 0.01 0.01"/>
+                <box size="0.015 0.01 0.015"/>
                 
                 <!-- <sphere radius="0.01"/> -->
             </geometry>
@@ -332,7 +332,7 @@
     <parent link="base_body" />
     <child link="bum_zr" />
     <axis xyz="0 0 1" />
-    <limit lower="-0.345" upper="0.345" effort="150.0" velocity="3"/>
+    <limit lower="-0.345" upper="0.345" effort="1000" velocity="3"/>
     <!-- dynamics damping="5" friction="0.0"/ -->
 </joint>
 
@@ -364,7 +364,7 @@
     <parent link="bum_zr" />
     <child link="bum_xr" />
     <axis xyz="1 0 0" />
-    <limit lower="-1" upper="0.345" effort="150.0" velocity="3"/>
+    <limit lower="-1" upper="0.345" effort="1000" velocity="3"/>
     <!-- dynamics damping="5" friction="0.0"/ -->
 </joint>
 
@@ -395,7 +395,7 @@
     <parent link="bum_xr" />
     <child link="right_hip" />
     <axis xyz="0 1 0" />
-    <limit lower="0" upper="1" effort="150.0" velocity="3"/>
+    <limit lower="0" upper="1" effort="1000" velocity="3"/>
     <!-- dynamics damping="5" friction="0.0"/ -->
 </joint>
 
@@ -426,7 +426,7 @@
     <parent link="right_hip" />
     <child link="right_shin" />
     <axis xyz="0 1 0" />
-    <limit lower="-1.3" upper="0" effort="150.0" velocity="3"/>
+    <limit lower="-1.3" upper="0" effort="1000" velocity="3"/>
     <!-- dynamics damping="5" friction="0.0"/ -->
 </joint>
 
@@ -461,7 +461,7 @@
     <parent link="right_shin" />
     <child link="right_ankle" />
     <axis xyz="0 1 0" />
-    <limit lower="-1.3" upper="0.3" effort="150.0" velocity="3"/>
+    <limit lower="-1.3" upper="0.3" effort="1000" velocity="3"/>
     <!-- dynamics damping="5" friction="0.0"/ -->
 </joint>
 
@@ -495,7 +495,7 @@
     <parent link="right_ankle" />
     <child link="right_foot" />
     <axis xyz="0 1 0" />
-    <limit lower="-0.4" upper="0.7" effort="150.0" velocity="3"/>
+    <limit lower="-0.4" upper="0.7" effort="1000" velocity="3"/>
     <!-- dynamics damping="5" friction="0.0"/ -->
 </joint>
 
@@ -532,7 +532,7 @@
     <parent link="right_foot" />
     <child link="right_leg_contact_sensor" />
     <axis xyz="0 1 0" />
-    <!-- <limit lower="-" upper="0.7" effort="150.0" velocity="3"/> -->
+    <!-- <limit lower="-" upper="0.7" effort="1000" velocity="3"/> -->
     <!-- dynamics damping="5" friction="0.0"/ -->
 </joint>
 
@@ -551,7 +551,7 @@
                 <!--
                 <sphere radius="0.030"/>
                 -->
-                <box size="0.01 0.01 0.01"/>
+                <box size="0.015 0.015 0.015"/>
                 
                 <!-- <sphere radius="0.01"/> -->
             </geometry>
@@ -562,7 +562,7 @@
                 <!--
                 <sphere radius="0.030"/>
                 -->
-                <box size="0.01 0.01 0.01"/>
+                <box size="0.015 0.015 0.015"/>
                 
                 <!-- <sphere radius="0.01"/> -->
             </geometry>
@@ -582,7 +582,7 @@
     <parent link="base_body" />
     <child link="shoulder_zr" />
     <axis xyz="0 0 1" />
-    <limit lower="-0.345" upper="1.65" effort="150.0" velocity="3"/>
+    <limit lower="-0.345" upper="1.65" effort="1000" velocity="3"/>
     <!-- dynamics damping="5" friction="0.0"/ -->
 </joint>
 
@@ -613,7 +613,7 @@
     <parent link="shoulder_zr" />
     <child link="shoulder_xr" />
     <axis xyz="1 0 0" />
-    <limit lower="-0.1" upper="1.6" effort="150.0" velocity="3"/>
+    <limit lower="-0.1" upper="1.6" effort="1000" velocity="3"/>
     <!-- dynamics damping="5" friction="0.0"/ -->
 </joint>
 
@@ -644,7 +644,7 @@
     <parent link="shoulder_xr" />
     <child link="right_shoulder" />
     <axis xyz="0 1 0" />
-    <limit lower="0" upper="3" effort="150.0" velocity="3"/>
+    <limit lower="0" upper="3" effort="1000" velocity="3"/>
     <!-- dynamics damping="5" friction="0.0"/ -->
 </joint>
 
@@ -678,7 +678,7 @@
     <parent link="right_shoulder" />
     <child link="right_forearm" />
     <axis xyz="1 0 0" />
-    <limit lower="-1.6" upper="0" effort="150.0" velocity="3"/>
+    <limit lower="-1.6" upper="0" effort="1000" velocity="3"/>
     <!-- dynamics damping="5" friction="0.0"/ -->
 </joint>
 
@@ -714,7 +714,7 @@
     <parent link="base_body" />
     <child link="shoulder_zl" />
     <axis xyz="0 0 1" />
-    <limit lower="-1.65" upper="0.1" effort="150.0" velocity="3"/>
+    <limit lower="-1.65" upper="0.1" effort="1000" velocity="3"/>
     <!-- dynamics damping="5" friction="0.0"/ -->
 </joint>
 
@@ -745,7 +745,7 @@
     <parent link="shoulder_zl" />
     <child link="shoulder_xl" />
     <axis xyz="1 0 0" />
-    <limit lower="-0.1" upper="1.6" effort="150.0" velocity="3"/>
+    <limit lower="-0.1" upper="1.6" effort="1000" velocity="3"/>
     <!-- dynamics damping="5" friction="0.0"/ -->
 </joint>
 
@@ -776,7 +776,7 @@
     <parent link="shoulder_xl" />
     <child link="left_shoulder" />
     <axis xyz="0 1 0" />
-    <limit lower="-3" upper="0" effort="150.0" velocity="3"/>
+    <limit lower="-3" upper="0" effort="1000" velocity="3"/>
     <!-- dynamics damping="5" friction="0.0"/ -->
 </joint>
 
@@ -810,7 +810,7 @@
     <parent link="left_shoulder" />
     <child link="left_forearm" />
     <axis xyz="1 0 0" />
-    <limit lower="-1.6" upper="0" effort="150.0" velocity="3"/>
+    <limit lower="-1.6" upper="0" effort="1000" velocity="3"/>
     <!-- dynamics damping="5" friction="0.0"/ -->
 </joint>
 

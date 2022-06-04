@@ -9,15 +9,73 @@ class JointPub(object):
     def __init__(self):
 
         self.publishers_array = []
-        self._haa_joint_pub = rospy.Publisher('/monoped/haa_joint_position_controller/command', Float64, queue_size=1)
-        self._hfe_joint_pub = rospy.Publisher('/monoped/hfe_joint_position_controller/command', Float64, queue_size=1)
-        self._kfe_joint_pub = rospy.Publisher('/monoped/kfe_joint_position_controller/command', Float64, queue_size=1)
-        
-        self.publishers_array.append(self._haa_joint_pub)
-        self.publishers_array.append(self._hfe_joint_pub)
-        self.publishers_array.append(self._kfe_joint_pub)
+        self._bum_zlj_pub = rospy.Publisher('/bum_zlj_joint_position_controller/command', Float64, queue_size=1)
+        self._bum_xlj_pub = rospy.Publisher('/bum_xlj_joint_position_controller/command', Float64, queue_size=1)
+        self._bum_ylj_pub = rospy.Publisher('/bum_ylj_joint_position_controller/command', Float64, queue_size=1)
+        self._knee_left_pub = rospy.Publisher('/knee_left_joint_position_controller/command', Float64, queue_size=1)
+        self._ankle_lj_pub = rospy.Publisher('/ankle_lj_joint_position_controller/command', Float64, queue_size=1)
+        self._foot_lj_pub = rospy.Publisher('/foot_lj_joint_position_controller/command', Float64, queue_size=1)
+        self._bum_zrj_pub = rospy.Publisher('/bum_zrj_joint_position_controller/command', Float64, queue_size=1)
+        self._bum_xrj_pub = rospy.Publisher('/bum_xrj_joint_position_controller/command', Float64, queue_size=1)
+        self._bum_yrj_pub = rospy.Publisher('/bum_yrj_joint_position_controller/command', Float64, queue_size=1)
+        self._knee_right_pub = rospy.Publisher('/knee_right_joint_position_controller/command', Float64, queue_size=1)
+        self._ankle_rj_pub = rospy.Publisher('/ankle_rj_joint_position_controller/command', Float64, queue_size=1)
+        self._foot_rj_pub = rospy.Publisher('/foot_rj_joint_position_controller/command', Float64, queue_size=1)
+        self._shoulder_zlj_pub = rospy.Publisher('/shoulder_zlj_joint_position_controller/command', Float64, queue_size=1)
+        self._shoulder_xlj_pub = rospy.Publisher('/shoulder_xlj_joint_position_controller/command', Float64, queue_size=1)
+        self._shoulder_ylj_pub = rospy.Publisher('/shoulder_ylj_joint_position_controller/command', Float64, queue_size=1)
+        self._forearm_ylj_pub = rospy.Publisher('/forearm_ylj_joint_position_controller/command', Float64, queue_size=1)
+        self._shoulder_zrj_pub = rospy.Publisher('/shoulder_zrj_joint_position_controller/command', Float64, queue_size=1)
+        self._shoulder_xrj_pub = rospy.Publisher('/shoulder_xrj_joint_position_controller/command', Float64, queue_size=1)
+        self._shoulder_yrj_pub = rospy.Publisher('/shoulder_yrj_joint_position_controller/command', Float64, queue_size=1)
+        self._forearm_yrj_pub = rospy.Publisher('/forearm_yrj_joint_position_controller/command', Float64, queue_size=1)
 
-        self.init_pos = [0.0,0.0,0.0]
+
+        self.publishers_array = [
+            self._bum_zlj_pub,
+            self._bum_xlj_pub,
+            self._bum_ylj_pub,
+            self._knee_left_pub,
+            self._ankle_lj_pub,
+            self._foot_lj_pub,
+            self._bum_zrj_pub,
+            self._bum_xrj_pub,
+            self._bum_yrj_pub,
+            self._knee_right_pub,
+            self._ankle_rj_pub,
+            self._foot_rj_pub,
+            self._shoulder_zlj_pub,
+            self._shoulder_xlj_pub,
+            self._shoulder_ylj_pub,
+            self._forearm_ylj_pub,
+            self._shoulder_zrj_pub,
+            self._shoulder_xrj_pub,
+            self._shoulder_yrj_pub,
+            self._forearm_yrj_pub,
+        ]
+
+        self.init_pos = [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            ]
 
     def set_init_pose(self):
         """
@@ -33,40 +91,207 @@ class JointPub(object):
         Checks that all the publishers are working
         :return:
         """
+
         rate = rospy.Rate(10)  # 10hz
-        while (self._haa_joint_pub.get_num_connections() == 0):
-            rospy.logdebug("No susbribers to _haa_joint_pub yet so we wait and try again")
+        
+        
+        while (self._bum_zlj_pub.get_num_connections() == 0):
+            rospy.logdebug("No susbribers to _bum_zlj_pub yet so we wait and try again")
             try:
                 rate.sleep()
             except rospy.ROSInterruptException:
                 # This is to avoid error when world is rested, time when backwards.
                 pass
-        rospy.logdebug("_haa_joint_pub Publisher Connected")
+        rospy.logdebug("_bum_zlj_pub Publisher Connected")
 
-        while (self._hfe_joint_pub.get_num_connections() == 0):
-            rospy.logdebug("No susbribers to _hfe_joint_pub yet so we wait and try again")
+        while (self._bum_xlj_pub.get_num_connections() == 0):
+            rospy.logdebug("No susbribers to _bum_xlj_pub yet so we wait and try again")
             try:
                 rate.sleep()
             except rospy.ROSInterruptException:
                 # This is to avoid error when world is rested, time when backwards.
                 pass
-        rospy.logdebug("_hfe_joint_pub Publisher Connected")
+        rospy.logdebug("_bum_xlj_pub Publisher Connected")
 
-        while (self._kfe_joint_pub.get_num_connections() == 0):
-            rospy.logdebug("No susbribers to _kfe_joint_pub yet so we wait and try again")
+        while (self._bum_ylj_pub.get_num_connections() == 0):
+            rospy.logdebug("No susbribers to _bum_ylj_pub yet so we wait and try again")
             try:
                 rate.sleep()
             except rospy.ROSInterruptException:
                 # This is to avoid error when world is rested, time when backwards.
                 pass
-        rospy.logdebug("_kfe_joint_pub Publisher Connected")
+        rospy.logdebug("_bum_ylj_pub Publisher Connected")
+
+        while (self._knee_left_pub.get_num_connections() == 0):
+            rospy.logdebug("No susbribers to _knee_left_pub yet so we wait and try again")
+            try:
+                rate.sleep()
+            except rospy.ROSInterruptException:
+                # This is to avoid error when world is rested, time when backwards.
+                pass
+        rospy.logdebug("_knee_left_pub Publisher Connected")
+
+        while (self._ankle_lj_pub.get_num_connections() == 0):
+            rospy.logdebug("No susbribers to _ankle_lj_pub yet so we wait and try again")
+            try:
+                rate.sleep()
+            except rospy.ROSInterruptException:
+                # This is to avoid error when world is rested, time when backwards.
+                pass
+        rospy.logdebug("_ankle_lj_pub Publisher Connected")
+
+        while (self._foot_lj_pub.get_num_connections() == 0):
+            rospy.logdebug("No susbribers to _foot_lj_pub yet so we wait and try again")
+            try:
+                rate.sleep()
+            except rospy.ROSInterruptException:
+                # This is to avoid error when world is rested, time when backwards.
+                pass
+        rospy.logdebug("_foot_lj_pub Publisher Connected")
+
+        while (self._bum_zrj_pub.get_num_connections() == 0):
+            rospy.logdebug("No susbribers to _bum_zrj_pub yet so we wait and try again")
+            try:
+                rate.sleep()
+            except rospy.ROSInterruptException:
+                # This is to avoid error when world is rested, time when backwards.
+                pass
+        rospy.logdebug("_bum_zrj_pub Publisher Connected")
+
+        while (self._bum_xrj_pub.get_num_connections() == 0):
+            rospy.logdebug("No susbribers to _bum_xrj_pub yet so we wait and try again")
+            try:
+                rate.sleep()
+            except rospy.ROSInterruptException:
+                # This is to avoid error when world is rested, time when backwards.
+                pass
+        rospy.logdebug("_bum_xrj_pub Publisher Connected")
+
+        while (self._bum_yrj_pub.get_num_connections() == 0):
+            rospy.logdebug("No susbribers to _bum_yrj_pub yet so we wait and try again")
+            try:
+                rate.sleep()
+            except rospy.ROSInterruptException:
+                # This is to avoid error when world is rested, time when backwards.
+                pass
+        rospy.logdebug("_bum_yrj_pub Publisher Connected")
+
+        while (self._knee_right_pub.get_num_connections() == 0):
+            rospy.logdebug("No susbribers to _knee_right_pub yet so we wait and try again")
+            try:
+                rate.sleep()
+            except rospy.ROSInterruptException:
+                # This is to avoid error when world is rested, time when backwards.
+                pass
+        rospy.logdebug("_knee_right_pub Publisher Connected")
+
+        while (self._ankle_rj_pub.get_num_connections() == 0):
+            rospy.logdebug("No susbribers to _ankle_rj_pub yet so we wait and try again")
+            try:
+                rate.sleep()
+            except rospy.ROSInterruptException:
+                # This is to avoid error when world is rested, time when backwards.
+                pass
+        rospy.logdebug("_ankle_rj_pub Publisher Connected")
+
+        while (self._foot_rj_pub.get_num_connections() == 0):
+            rospy.logdebug("No susbribers to _foot_rj_pub yet so we wait and try again")
+            try:
+                rate.sleep()
+            except rospy.ROSInterruptException:
+                # This is to avoid error when world is rested, time when backwards.
+                pass
+        rospy.logdebug("_foot_rj_pub Publisher Connected")
+
+        while (self._shoulder_zlj_pub.get_num_connections() == 0):
+            rospy.logdebug("No susbribers to _shoulder_zlj_pub yet so we wait and try again")
+            try:
+                rate.sleep()
+            except rospy.ROSInterruptException:
+                # This is to avoid error when world is rested, time when backwards.
+                pass
+        rospy.logdebug("_shoulder_zlj_pub Publisher Connected")
+
+        while (self._shoulder_xlj_pub.get_num_connections() == 0):
+            rospy.logdebug("No susbribers to _shoulder_xlj_pub yet so we wait and try again")
+            try:
+                rate.sleep()
+            except rospy.ROSInterruptException:
+                # This is to avoid error when world is rested, time when backwards.
+                pass
+        rospy.logdebug("_shoulder_xlj_pub Publisher Connected")
+
+        while (self._shoulder_ylj_pub.get_num_connections() == 0):
+            rospy.logdebug("No susbribers to _shoulder_ylj_pub yet so we wait and try again")
+            try:
+                rate.sleep()
+            except rospy.ROSInterruptException:
+                # This is to avoid error when world is rested, time when backwards.
+                pass
+        rospy.logdebug("_shoulder_ylj_pub Publisher Connected")
+
+        while (self._forearm_ylj_pub.get_num_connections() == 0):
+            rospy.logdebug("No susbribers to _forearm_ylj_pub yet so we wait and try again")
+            try:
+                rate.sleep()
+            except rospy.ROSInterruptException:
+                # This is to avoid error when world is rested, time when backwards.
+                pass
+        rospy.logdebug("_forearm_ylj_pub Publisher Connected")
+
+        while (self._shoulder_zrj_pub.get_num_connections() == 0):
+            rospy.logdebug("No susbribers to _shoulder_zrj_pub yet so we wait and try again")
+            try:
+                rate.sleep()
+            except rospy.ROSInterruptException:
+                # This is to avoid error when world is rested, time when backwards.
+                pass
+        rospy.logdebug("_shoulder_zrj_pub Publisher Connected")
+
+        while (self._shoulder_xrj_pub.get_num_connections() == 0):
+            rospy.logdebug("No susbribers to _shoulder_xrj_pub yet so we wait and try again")
+            try:
+                rate.sleep()
+            except rospy.ROSInterruptException:
+                # This is to avoid error when world is rested, time when backwards.
+                pass
+        rospy.logdebug("_shoulder_xrj_pub Publisher Connected")
+
+        while (self._shoulder_yrj_pub.get_num_connections() == 0):
+            rospy.logdebug("No susbribers to _shoulder_yrj_pub yet so we wait and try again")
+            try:
+                rate.sleep()
+            except rospy.ROSInterruptException:
+                # This is to avoid error when world is rested, time when backwards.
+                pass
+        rospy.logdebug("_shoulder_yrj_pub Publisher Connected")
+
+
+        while (self._forearm_yrj_pub.get_num_connections() == 0):
+            rospy.logdebug("No susbribers to _forearm_yrj_pub yet so we wait and try again")
+            try:
+                rate.sleep()
+            except rospy.ROSInterruptException:
+                # This is to avoid error when world is rested, time when backwards.
+                pass
+        rospy.logdebug("_forearm_yrj_pub Publisher Connected")
+
 
         rospy.logdebug("All Publishers READY")
+
+
+
+
 
     def joint_mono_des_callback(self, msg):
         rospy.logdebug(str(msg.joint_state.position))
 
         self.move_joints(msg.joint_state.position)
+
+
+
+
+
 
     def move_joints(self, joints_array):
 
@@ -77,6 +302,8 @@ class JointPub(object):
           rospy.logdebug("JointsPos>>"+str(joint_value))
           publisher_object.publish(joint_value)
           i += 1
+
+
 
 
     def start_loop(self, rate_value = 2.0):
@@ -117,4 +344,4 @@ if __name__=="__main__":
     joint_publisher = JointPub()
     rate_value = 50.0
     #joint_publisher.start_loop(rate_value)
-    joint_publisher.start_sinus_loop(rate_value)
+    # joint_publisher.start_sinus_loop(rate_value)

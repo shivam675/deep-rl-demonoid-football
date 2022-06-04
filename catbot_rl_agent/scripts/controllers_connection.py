@@ -7,7 +7,7 @@ class ControllersConnection():
     
     def __init__(self, namespace):
 
-        self.switch_service_name = '/'+namespace+'/controller_manager/switch_controller'
+        self.switch_service_name = '/controller_manager/switch_controller'
         self.switch_service = rospy.ServiceProxy(self.switch_service_name, SwitchController)
 
     def switch_controllers(self, controllers_on, controllers_off, strictness=1):
@@ -70,8 +70,28 @@ class ControllersConnection():
         return reset_result
 
     def reset_monoped_joint_controllers(self):
-        controllers_reset = ['joint_state_controller',
-                             'haa_joint_position_controller',
-                             'hfe_joint_position_controller',
-                             'kfe_joint_position_controller']
+        controllers_reset = [
+            'joint_state_controller',
+            'bum_zlj_joint_position_controller',
+            'bum_xlj_joint_position_controller',
+            'bum_ylj_joint_position_controller',
+            'knee_left_joint_position_controller',
+            'ankle_lj_joint_position_controller',
+            'foot_lj_joint_position_controller',
+            'bum_zrj_joint_position_controller',
+            'bum_xrj_joint_position_controller',
+            'bum_yrj_joint_position_controller',
+            'knee_right_joint_position_controller',
+            'ankle_rj_joint_position_controller',
+            'foot_rj_joint_position_controller',
+            'shoulder_zlj_joint_position_controller',
+            'shoulder_xlj_joint_position_controller',
+            'shoulder_ylj_joint_position_controller',
+            'forearm_ylj_joint_position_controller',
+            'shoulder_zrj_joint_position_controller',
+            'shoulder_xrj_joint_position_controller',
+            'shoulder_yrj_joint_position_controller',
+            'forearm_yrj_joint_position_controller',
+
+        ]
         self.reset_controllers(controllers_reset)
