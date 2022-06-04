@@ -16,9 +16,64 @@
         </plugin>
     </gazebo>
 
+    <gazebo>
+        <plugin name="p3d_base_controller" filename="libgazebo_ros_p3d.so">
+            <alwaysOn>true</alwaysOn>
+            <!--<updateRate>50.0</updateRate>-->
+            <bodyName>base</bodyName>
+            <topicName>odom</topicName>
+            <gaussianNoise>0.01</gaussianNoise>
+            <frameName>world</frameName>
+            <xyzOffsets>0 0 0</xyzOffsets>
+            <rpyOffsets>0 0 0</rpyOffsets>
+        </plugin>
+    </gazebo>
+
+    <!-- Left leg -->
+
+    <gazebo reference="left_leg_contact_sensor">
+        <material>Gazebo/Blue</material>
+        <kp>1000000.0</kp>
+        <kd>1000000.0</kd>
+        <mu1>1000000.0</mu1>
+        <mu2>1000000.0</mu2>
 
 
+        <sensor name="left_leg_contact_sensor" type="contact">
+          <always_on>true</always_on>
+          <contact>
+            <collision>left_leg_contact_sensor_collision</collision>
+          </contact>
+          <plugin name="bumper0_plugin" filename="libgazebo_ros_bumper.so">
+            <bumperTopicName>lower_left_leg_contactsensor_state</bumperTopicName>
+            <frameName>left_leg_contact_sensor</frameName>
+          </plugin>
+        </sensor>
 
+    </gazebo>
+
+
+    <!-- Right leg -->
+    <gazebo reference="right_leg_contact_sensor">
+        <material>Gazebo/Blue</material>
+        <kp>1000000.0</kp>
+        <kd>1000000.0</kd>
+        <mu1>1000000.0</mu1>
+        <mu2>1000000.0</mu2>
+
+
+        <sensor name="right_leg_contact_sensor" type="contact">
+          <always_on>true</always_on>
+          <contact>
+            <collision>right_leg_contact_sensor_collision</collision>
+          </contact>
+          <plugin name="bumper0_plugin" filename="libgazebo_ros_bumper.so">
+            <bumperTopicName>lower_right_leg_contactsensor_state</bumperTopicName>
+            <frameName>right_leg_contact_sensor</frameName>
+          </plugin>
+        </sensor>
+
+    </gazebo>
 
 
 

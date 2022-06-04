@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 '''
     Original Training code made by Ricardo Tellez <rtellez@theconstructsim.com>
