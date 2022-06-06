@@ -8,12 +8,12 @@ nsteps: 1000
 
 # Environment Parameters
 desired_pose:
-    x: 0.0
+    x: -4.0
     y: 0.0
-    z: 1.0
-desired_force: 7.08 # In Newtons, normal contact force when stanting still with 9.81 gravity
+    z: 0.8
+desired_force: 107.8 # In Newtons, normal contact force when stanting still with 9.81 gravity
 desired_yaw: 0.0 # Desired yaw in radians for the hopper to stay
-max_height: 3.0   # in meters
+max_height: 3   # in meters
 min_height: 0.5   # in meters
 max_incl: 1.57       # in rads
 running_step: 0.001   # in seconds

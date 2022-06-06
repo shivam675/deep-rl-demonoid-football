@@ -1,7 +1,7 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 '''
-    By Miguel Angel Rodriguez <duckfrost@theconstructsim.com>
-    Visit our website at www.theconstructsim.com
+    By Shivam Chavan <shivam31199@gmail.com>
+    Visit our website at www.melodic.pythonanywhere.com
 '''
 import gym
 import rospy
@@ -13,18 +13,16 @@ from gym.utils import seeding
 from gym.envs.registration import register
 from gazebo_connection import GazeboConnection
 from joint_publisher import JointPub
-from monoped_state import MonopedState
+from catbot_state import CatbotState
 from controllers_connection import ControllersConnection
 
 #register the training environment in the gym as an available one
 reg = register(
-    id='Monoped-v0',
-    entry_point='monoped_env:MonopedEnv',
-    timestep_limit=50,
-    )
+    id='bipedal-catbot-v0',
+    entry_point='catbot_env:CatbotEnv')
 
 
-class MonopedEnv(gym.Env):
+class CatbotEnv(gym.Env):
 
     def __init__(self):
         
@@ -36,10 +34,12 @@ class MonopedEnv(gym.Env):
         self.desired_pose.position.x = rospy.get_param("/desired_pose/x")
         self.desired_pose.position.y = rospy.get_param("/desired_pose/y")
         self.desired_pose.position.z = rospy.get_param("/desired_pose/z")
+
         self.running_step = rospy.get_param("/running_step")
         self.max_incl = rospy.get_param("/max_incl")
         self.max_height = rospy.get_param("/max_height")
         self.min_height = rospy.get_param("/min_height")
+        
         self.joint_increment_value = rospy.get_param("/joint_increment_value")
         self.done_reward = rospy.get_param("/done_reward")
         self.alive_reward = rospy.get_param("/alive_reward")
@@ -55,9 +55,9 @@ class MonopedEnv(gym.Env):
         # stablishes connection with simulator
         self.gazebo = GazeboConnection()
 
-        self.controllers_object = ControllersConnection(namespace="monoped")
+        self.controllers_object = ControllersConnection(namespace=None)
 
-        self.monoped_state_object = MonopedState(   max_height=self.max_height,
+        self.monoped_state_object = CatbotState(   max_height=self.max_height,
                                                     min_height=self.min_height,
                                                     abs_max_roll=self.max_incl,
                                                     abs_max_pitch=self.max_incl,
@@ -82,12 +82,12 @@ class MonopedEnv(gym.Env):
 
 
         """
-        For this version, we consider 6 actions
+        For this version, we consider 39 actions
         1-2) Increment/Decrement haa_joint
         3-4) Increment/Decrement hfe_joint
         5-6) Increment/Decrement kfe_joint
         """
-        self.action_space = spaces.Discrete(6)
+        self.action_space = spaces.Discrete(39)
         self.reward_range = (-np.inf, np.inf)
 
         self._seed()
@@ -98,43 +98,43 @@ class MonopedEnv(gym.Env):
         return [seed]
         
     # Resets the state of the environment and returns an initial observation.
-    def _reset(self):
+    def reset(self):
 
         # 0st: We pause the Simulator
-        rospy.logdebug("Pausing SIM...")
+        # rospy.loginfo("Pausing SIM...")
         self.gazebo.pauseSim()
 
         # 1st: resets the simulation to initial values
-        rospy.logdebug("Reset SIM...")
+        # rospy.loginfo("Reset SIM...")
         self.gazebo.resetSim()
 
         # 2nd: We Set the gravity to 0.0 so that we dont fall when reseting joints
         # It also UNPAUSES the simulation
-        rospy.logdebug("Remove Gravity...")
+        # rospy.loginfo("Remove Gravity...")
         self.gazebo.change_gravity(0.0, 0.0, 0.0)
 
         # EXTRA: Reset JoinStateControlers because sim reset doesnt reset TFs, generating time problems
-        rospy.logdebug("reset_monoped_joint_controllers...")
+        # rospy.loginfo("reset_monoped_joint_controllers...")
         self.controllers_object.reset_monoped_joint_controllers()
 
         # 3rd: resets the robot to initial conditions
-        rospy.logdebug("set_init_pose...")
+        # rospy.loginfo("set_init_pose...")
         self.monoped_joint_pubisher_object.set_init_pose()
 
         # 5th: Check all subscribers work.
         # Get the state of the Robot defined by its RPY orientation, distance from
         # desired point, contact force and JointState of the three joints
-        rospy.logdebug("check_all_systems_ready...")
+        # rospy.loginfo("check_all_systems_ready...")
         self.monoped_state_object.check_all_systems_ready()
-        rospy.logdebug("get_observations...")
+        # rospy.loginfo("get_observations...")
         observation = self.monoped_state_object.get_observations()
 
         # 6th: We restore the gravity to original
-        rospy.logdebug("Restore Gravity...")
+        # rospy.loginfo("Restore Gravity...")
         self.gazebo.change_gravity(0.0, 0.0, -9.81)
 
         # 7th: pauses simulation
-        rospy.logdebug("Pause SIM...")
+        # rospy.loginfo("Pause SIM...")
         self.gazebo.pauseSim()
 
         # Get the State Discrete Stringuified version of the observations
@@ -142,7 +142,7 @@ class MonopedEnv(gym.Env):
 
         return state
 
-    def _step(self, action):
+    def step(self, action):
 
         # Given the action selected by the learning algorithm,
         # we perform the corresponding movement of the robot
@@ -169,7 +169,7 @@ class MonopedEnv(gym.Env):
 
         # Get the State Discrete Stringuified version of the observations
         state = self.get_state(observation)
-
+        # print(state)
         return state, reward, done, {}
 
     def get_state(self, observation):
